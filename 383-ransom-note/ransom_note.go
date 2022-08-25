@@ -17,3 +17,21 @@ func CanConstruct(ransomNote string, magazine string) bool {
 	}
 	return true
 }
+
+func CanConstructAlternate(ransomNote string, magazine string) bool {
+
+	result := make([]int, 26)
+
+	for _, ch := range magazine {
+		result[ch-'a']++
+	}
+
+	for _, ch := range ransomNote {
+		if result[ch-'a'] == 0 {
+			return false
+		} else {
+			result[ch-'a']--
+		}
+	}
+	return true
+}
